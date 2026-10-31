@@ -1,0 +1,373 @@
+<title>Creative Studio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: editorial e delicado. Hero assimétrico com foto em arco, traço (swash) ecoando o logo, seções alternando fundo claro e vinho. */
+:root {
+  --vinho: #633F4B;      /* rosé escuro */
+  --rose: #A87585;       /* rosé queimado */
+  --blush: #D8AEB8;      /* rosé suave */
+  --pastel: #F1DDE0;     /* rosa pastel */
+  --fundo: #FFF9F7;      /* fundo */
+  --foto-bg: #FBDFDB;    /* cor de fundo da foto, pra fundir sem emenda */
+  --serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --sans: "Jost", "Helvetica Neue", Arial, sans-serif;
+  --gutter-l: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+body {
+  margin: 0; background: var(--fundo); color: var(--vinho);
+  font-family: var(--sans); font-size: 17px; line-height: 1.65; font-weight: 400;
+  overflow-x: hidden;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--fundo); }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; border-radius: 4px; }
+
+.wrap { width: 100%; max-width: 1160px; margin-inline: auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
+.eyebrow { font-size: 12px; letter-spacing: .28em; text-transform: uppercase; color: var(--rose); font-weight: 500; margin: 0 0 14px; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; margin: 0; text-wrap: balance; line-height: 1.05; }
+h2 { font-size: clamp(36px, 5.5vw, 58px); }
+.star { width: 1em; height: 1em; display: inline-block; fill: currentColor; flex: none; }
+
+/* Botões */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 26px; border-radius: 999px; font-family: var(--sans); font-size: 15px; font-weight: 500; letter-spacing: .04em; text-decoration: none; border: 1.5px solid transparent; transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease; cursor: pointer; }
+.btn svg { width: 18px; height: 18px; flex: none; }
+.btn:hover { transform: translateY(-2px); }
+.btn-solid { background: var(--vinho); color: var(--fundo); }
+.btn-solid:hover { background: var(--rose); }
+.btn-line { border-color: var(--vinho); color: var(--vinho); background: transparent; }
+.btn-line:hover { background: var(--vinho); color: var(--fundo); }
+
+/* Navegação */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--fundo); border-bottom: 1px solid var(--pastel); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
+.nav img { height: 40px; width: auto; }
+.nav ul { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; }
+.nav ul a { text-decoration: none; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; font-weight: 500; }
+.nav ul a:hover { color: var(--rose); }
+.nav .btn { padding: 10px 20px; font-size: 14px; }
+
+/* Hero */
+.hero { padding-block: clamp(36px, 7vw, 88px) clamp(48px, 8vw, 100px); position: relative; overflow: hidden; }
+.hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(24px, 5vw, 72px); align-items: center; }
+.hero-text { min-width: 0; }
+.hero h1 { font-size: clamp(46px, 7.6vw, 96px); letter-spacing: -.01em; }
+.hero h1 em { font-style: italic; color: var(--rose); font-weight: 500; }
+.hero p.lead { font-size: clamp(17px, 2vw, 20px); max-width: 30em; margin: 24px 0 32px; font-weight: 300; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 34px; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--rose); font-weight: 500; }
+.hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+.hero-meta .star { font-size: 11px; }
+
+.arch-wrap { position: relative; justify-self: center; width: min(100%, 440px); min-width: 0; }
+.arch { position: relative; z-index: 1; aspect-ratio: 4 / 5; border-radius: 999px 999px 24px 24px; overflow: hidden; background: var(--foto-bg); }
+.arch img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
+.arch-outline { position: absolute; inset: -14px -14px 14px 14px; border: 1.5px solid var(--blush); border-radius: 999px 999px 24px 24px; z-index: 0; }
+.arch-star { position: absolute; z-index: 2; color: var(--rose); }
+.arch-star.a { width: 44px; height: 44px; top: 6%; right: -14px; }
+.arch-star.b { width: 22px; height: 22px; bottom: 14%; left: -12px; color: var(--blush); }
+.swash { position: absolute; left: -10%; right: -10%; top: 58%; width: 120%; z-index: 2; pointer-events: none; overflow: visible; }
+.swash path { fill: none; stroke: var(--rose); stroke-width: 1.4; stroke-linecap: round; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise { animation: rise .8s cubic-bezier(.2,.7,.2,1) backwards; }
+  .rise.d1 { animation-delay: .08s; } .rise.d2 { animation-delay: .18s; } .rise.d3 { animation-delay: .28s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(18px); } }
+  .twinkle { animation: twinkle 3.6s ease-in-out infinite; }
+  @keyframes twinkle { 50% { transform: scale(.78) rotate(20deg); opacity: .7; } }
+}
+
+/* Faixa de serviços */
+.ribbon { background: var(--vinho); color: var(--pastel); overflow: hidden; }
+.ribbon .wrap { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 34px; padding-block: 18px; font-family: var(--serif); font-style: italic; font-size: clamp(18px, 2.4vw, 24px); }
+.ribbon span { display: inline-flex; align-items: center; gap: 12px; }
+.ribbon .star { font-size: 12px; color: var(--blush); }
+
+/* Sobre */
+.sobre { padding-block: clamp(64px, 10vw, 128px); }
+.sobre .wrap { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(28px, 6vw, 88px); align-items: center; }
+.sobre-foto { min-width: 0; background: var(--foto-bg); border-radius: 24px; overflow: hidden; aspect-ratio: 4 / 5; max-width: 420px; width: 100%; justify-self: center; position: relative; }
+.sobre-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
+.sobre-texto { min-width: 0; }
+.sobre-texto h2 { margin-bottom: 26px; }
+.sobre-texto p { max-width: 34em; margin: 0 0 18px; font-size: 18px; }
+.assinatura { font-family: var(--serif); font-style: italic; font-size: 30px; color: var(--rose); margin-top: 24px; display: flex; align-items: center; gap: 12px; }
+.assinatura .star { font-size: 18px; }
+
+/* Serviços */
+.servicos { background: var(--pastel); padding-block: clamp(64px, 10vw, 120px); }
+.servicos .wrap { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(28px, 6vw, 88px); align-items: start; }
+.servicos .intro { min-width: 0; position: sticky; top: 110px; }
+.servicos .intro p { margin: 22px 0 28px; max-width: 24em; font-weight: 300; font-size: 18px; }
+.lista { list-style: none; margin: 0; padding: 0; min-width: 0; }
+.lista li { display: grid; grid-template-columns: 1fr auto; gap: 6px 20px; align-items: center; padding: 26px 0; border-top: 1px solid var(--blush); transition: padding-left .25s ease; }
+.lista li:last-child { border-bottom: 1px solid var(--blush); }
+.lista li:hover { padding-left: 12px; }
+.lista h3 { font-size: clamp(26px, 3.4vw, 36px); }
+.lista p { grid-column: 1; margin: 0; font-size: 16px; color: var(--vinho); font-weight: 300; }
+.lista .star { grid-row: 1 / span 2; grid-column: 2; font-size: 20px; color: var(--rose); }
+
+/* Projetos */
+.projetos { padding-block: clamp(64px, 10vw, 128px); }
+.projetos header { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 22px; margin-bottom: 36px; }
+.projetos header > div { min-width: 0; }
+.filtros { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font: inherit; font-size: 14px; font-weight: 500; letter-spacing: .04em; padding: 8px 18px; border-radius: 999px; border: 1.5px solid var(--blush); background: transparent; color: var(--vinho); cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease; }
+.chip:hover { border-color: var(--rose); }
+.chip[aria-pressed="true"] { background: var(--vinho); border-color: var(--vinho); color: var(--fundo); }
+.galeria { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.card { margin: 0; min-width: 0; }
+.card .quadro { position: relative; aspect-ratio: 4 / 5; border-radius: 18px; overflow: hidden; background: linear-gradient(160deg, var(--pastel), var(--blush)); display: grid; place-items: center; transition: transform .3s ease; }
+.card:nth-child(3n+2) .quadro { background: linear-gradient(160deg, var(--blush), var(--rose)); }
+.card:nth-child(3n) .quadro { background: linear-gradient(160deg, var(--pastel), var(--fundo)); box-shadow: inset 0 0 0 1.5px var(--blush); }
+.card:hover .quadro { transform: translateY(-4px); }
+.quadro img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.quadro .ph { display: grid; justify-items: center; gap: 10px; text-align: center; padding: 16px; color: var(--vinho); }
+.quadro .ph .star { font-size: 26px; color: var(--vinho); opacity: .75; }
+.quadro .ph b { font-family: var(--serif); font-weight: 500; font-size: 24px; line-height: 1.1; }
+.card figcaption { padding: 12px 4px 0; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: var(--rose); font-weight: 500; }
+
+/* Contato */
+.contato { background: var(--vinho); color: var(--fundo); padding-block: clamp(64px, 10vw, 120px); text-align: center; position: relative; overflow: hidden; }
+.contato .eyebrow { color: var(--blush); }
+.contato h2 { max-width: 14em; margin-inline: auto; }
+.contato h2 em { font-style: italic; color: var(--blush); }
+.contato p { max-width: 30em; margin: 22px auto 34px; font-weight: 300; font-size: 18px; color: var(--pastel); }
+.contato .acoes { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+.contato .btn-solid { background: var(--fundo); color: var(--vinho); }
+.contato .btn-solid:hover { background: var(--blush); }
+.contato .btn-line { border-color: var(--blush); color: var(--fundo); }
+.contato .btn-line:hover { background: var(--fundo); color: var(--vinho); border-color: var(--fundo); }
+.contato .deco { position: absolute; color: var(--rose); opacity: .5; }
+.contato .deco.a { width: 90px; height: 90px; top: 10%; left: 6%; }
+.contato .deco.b { width: 46px; height: 46px; bottom: 14%; right: 9%; }
+.contato .wrap { position: relative; z-index: 1; }
+
+footer { background: var(--vinho); color: var(--blush); border-top: 1px solid rgba(216,174,184,.25); }
+footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 20px; padding-block: 22px; font-size: 14px; letter-spacing: .06em; }
+
+/* WhatsApp flutuante */
+.fab { position: fixed; right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 25; width: 56px; height: 56px; border-radius: 50%; background: var(--vinho); color: var(--fundo); display: grid; place-items: center; box-shadow: 0 8px 24px rgba(99,63,75,.35); transition: transform .2s ease, background .2s ease; }
+.fab:hover { transform: scale(1.06); background: var(--rose); }
+.fab svg { width: 26px; height: 26px; }
+
+/* Tablet e celular */
+@media (max-width: 960px) {
+  .galeria { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .servicos .intro { position: static; }
+}
+@media (max-width: 820px) {
+  .hero .wrap, .sobre .wrap, .servicos .wrap { grid-template-columns: 1fr; }
+  .hero .arch-wrap { width: min(86%, 380px); margin-top: 12px; }
+  .sobre-foto { max-width: 340px; }
+  .nav ul { display: none; }
+  .nav .btn span { display: none; }
+  .nav .btn { padding: 10px 14px; }
+}
+@media (max-width: 480px) {
+  body { font-size: 16px; }
+  .hero-cta .btn, .contato .acoes .btn { width: 100%; }
+  .quadro .ph b { font-size: 19px; }
+  .card figcaption { font-size: 12px; }
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 0C12 7 17 12 24 12 17 12 12 17 12 24 12 17 7 12 0 12 7 12 12 7 12 0Z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" d="M12 3.2a8.8 8.8 0 0 0-7.6 13.2L3.2 20.8l4.5-1.2A8.8 8.8 0 1 0 12 3.2Z"/><path fill="currentColor" d="M9 8.2c.3-.6.8-.5 1-.1l.7 1.6c.1.3 0 .6-.2.8l-.5.6c.6 1.2 1.6 2.1 2.8 2.7l.6-.6c.2-.2.5-.3.8-.2l1.6.8c.4.2.4.7 0 1.1-.6.8-1.6 1.1-2.6.8-2.7-.8-4.6-2.6-5.4-5.2-.2-.8 0-1.4.6-1.9Z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/></symbol>
+</svg>
+
+<nav class="nav" aria-label="Principal">
+  <div class="wrap">
+    <a href="#topo" aria-label="Creative Studio, início"><img src="assets/logo.png" alt="Creative Studio" width="93" height="40"></a>
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <a class="btn btn-solid" data-wa href="#contato" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span>Pedir orçamento</span></a>
+  </div>
+</nav>
+
+<header class="hero" id="topo">
+  <div class="wrap">
+    <div class="hero-text">
+      <p class="eyebrow rise">Artes digitais sob medida</p>
+      <h1 class="rise d1">Suas ideias viram <em>artes especiais</em></h1>
+      <p class="lead rise d2">Convites, cardápios, catálogos e identidades criados com carinho em cada detalhe, prontos pra você divulgar no WhatsApp e no Instagram.</p>
+      <div class="hero-cta rise d3">
+        <a class="btn btn-solid" data-wa href="#contato" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Chamar no WhatsApp</a>
+        <a class="btn btn-line" href="#projetos">Ver projetos</a>
+      </div>
+      <div class="hero-meta">
+        <span><svg class="star"><use href="#i-star"/></svg>Convites</span>
+        <span><svg class="star"><use href="#i-star"/></svg>Cardápios</span>
+        <span><svg class="star"><use href="#i-star"/></svg>Catálogos</span>
+      </div>
+    </div>
+    <div class="arch-wrap rise d2">
+      <div class="arch-outline"></div>
+      <div class="arch"><img src="assets/sara.jpg" alt="Sara Emanuelly, fundadora da Creative Studio" width="900" height="1191"></div>
+      <svg class="star arch-star a twinkle"><use href="#i-star"/></svg>
+      <svg class="star arch-star b"><use href="#i-star"/></svg>
+      <svg class="swash" viewBox="0 0 400 80" preserveAspectRatio="none" aria-hidden="true" height="64"><path d="M2 66 C 90 70, 190 40, 300 22 S 380 8, 398 10"/></svg>
+    </div>
+  </div>
+</header>
+
+<div class="ribbon" aria-hidden="true">
+  <div class="wrap">
+    <span>Convites digitais <svg class="star"><use href="#i-star"/></svg></span>
+    <span>Cardápios <svg class="star"><use href="#i-star"/></svg></span>
+    <span>Catálogos <svg class="star"><use href="#i-star"/></svg></span>
+    <span>Slides <svg class="star"><use href="#i-star"/></svg></span>
+    <span>Crachás</span>
+  </div>
+</div>
+
+<main>
+  <section class="sobre" id="sobre">
+    <div class="wrap">
+      <div class="sobre-foto"><img src="assets/sara.jpg" alt="Retrato de Sara Emanuelly sorrindo" width="900" height="1191" loading="lazy"></div>
+      <div class="sobre-texto">
+        <p class="eyebrow">Sobre mim</p>
+        <h2>Oi, eu sou a Sara Emanuelly</h2>
+        <p>Sou apaixonada por criatividade e pelo universo das artes digitais. Sou fundadora da Creative Studio, onde transformo ideias em artes especiais.</p>
+        <p>Amo criar convites digitais, desenvolver identidades e dar vida a cada detalhe de um projeto.</p>
+        <p>Tenho Deus como centro de tudo na minha vida e acredito que Ele guia cada passo da minha caminhada. 💗</p>
+        <div class="assinatura"><svg class="star"><use href="#i-star"/></svg>Sara Emanuelly</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="servicos" id="servicos">
+    <div class="wrap">
+      <div class="intro">
+        <p class="eyebrow">Serviços digitais</p>
+        <h2>O que eu posso criar pra você</h2>
+        <p>Tudo feito online, do primeiro papo até a arte final. Você recebe o material pronto pra usar e divulgar.</p>
+        <a class="btn btn-solid" data-wa href="#contato" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Quero um orçamento</a>
+      </div>
+      <ul class="lista">
+        <li><h3>Convites digitais</h3><p>Simples ou interativo, pronto pra enviar pelo WhatsApp.</p><svg class="star"><use href="#i-star"/></svg></li>
+        <li><h3>Cardápio digital ou físico</h3><p>Básico ou personalizado, com opção de impressão plastificada.</p><svg class="star"><use href="#i-star"/></svg></li>
+        <li><h3>Catálogo digital</h3><p>Seus produtos organizados num só lugar, fáceis de mostrar ao cliente.</p><svg class="star"><use href="#i-star"/></svg></li>
+        <li><h3>Slides simples</h3><p>Apresentações limpas, com a cara da sua marca.</p><svg class="star"><use href="#i-star"/></svg></li>
+        <li><h3>Crachá digital ou físico</h3><p>Em versão digital ou impresso e plastificado.</p><svg class="star"><use href="#i-star"/></svg></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="projetos" id="projetos">
+    <div class="wrap">
+      <header>
+        <div>
+          <p class="eyebrow">Projetos já feitos</p>
+          <h2>Um pouquinho do meu trabalho</h2>
+        </div>
+        <div class="filtros" role="group" aria-label="Filtrar projetos">
+          <button class="chip" type="button" data-f="todos" aria-pressed="true">Todos</button>
+          <button class="chip" type="button" data-f="convite" aria-pressed="false">Convites</button>
+          <button class="chip" type="button" data-f="cardapio" aria-pressed="false">Cardápios</button>
+          <button class="chip" type="button" data-f="catalogo" aria-pressed="false">Catálogos</button>
+          <button class="chip" type="button" data-f="slides" aria-pressed="false">Slides</button>
+          <button class="chip" type="button" data-f="cracha" aria-pressed="false">Crachás</button>
+        </div>
+      </header>
+      <div class="galeria" id="galeria"></div>
+    </div>
+  </section>
+
+  <section class="contato" id="contato">
+    <svg class="star deco a twinkle"><use href="#i-star"/></svg>
+    <svg class="star deco b"><use href="#i-star"/></svg>
+    <div class="wrap">
+      <p class="eyebrow">Contato</p>
+      <h2>Vamos criar algo <em>especial</em> juntas?</h2>
+      <p>Me conta sua ideia e eu respondo com um orçamento. O atendimento é todo online, pelo WhatsApp ou pelo Instagram.</p>
+      <div class="acoes">
+        <a class="btn btn-solid" data-wa href="#contato" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Falar no WhatsApp</a>
+        <a class="btn btn-line" data-ig href="#contato" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg>Ver no Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="ano">2026</span> Creative Studio</span>
+    <span>Criado com 💗 por Sara Emanuelly</span>
+  </div>
+</footer>
+
+<a class="fab" data-wa href="#contato" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp"><svg><use href="#i-wa"/></svg></a>
+
+<script>
+/* ====== CONFIGURAÇÃO: troque aqui e a página inteira atualiza ====== */
+var CONFIG = {
+  whatsapp: "5500000000000",           // DDI + DDD + número, só dígitos. Ex.: 5581999999999
+  mensagem: "Oi, Sara! Vi o site da Creative Studio e quero fazer um orçamento.",
+  instagram: "https://www.instagram.com/"  // link do perfil. Ex.: https://www.instagram.com/seuperfil
+};
+
+/* Projetos: coloque as imagens em assets/projetos/ com estes nomes (ou troque os nomes aqui). */
+var PROJETOS = [
+  { cat: "convite",  nome: "Convite digital",     img: "assets/projetos/convite-1.jpg" },
+  { cat: "cardapio", nome: "Cardápio",            img: "assets/projetos/cardapio-1.jpg" },
+  { cat: "catalogo", nome: "Catálogo digital",    img: "assets/projetos/catalogo-1.jpg" },
+  { cat: "cracha",   nome: "Crachá",              img: "assets/projetos/cracha-1.jpg" },
+  { cat: "convite",  nome: "Convite interativo",  img: "assets/projetos/convite-2.jpg" },
+  { cat: "slides",   nome: "Slides",              img: "assets/projetos/slides-1.jpg" },
+  { cat: "cardapio", nome: "Cardápio plastificado", img: "assets/projetos/cardapio-2.jpg" },
+  { cat: "catalogo", nome: "Catálogo de produtos", img: "assets/projetos/catalogo-2.jpg" }
+];
+
+(function () {
+  var wa = "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(CONFIG.mensagem);
+  document.querySelectorAll("[data-wa]").forEach(function (a) { a.href = wa; });
+  document.querySelectorAll("[data-ig]").forEach(function (a) { a.href = CONFIG.instagram; });
+  document.getElementById("ano").textContent = new Date().getFullYear();
+
+  var galeria = document.getElementById("galeria");
+  PROJETOS.forEach(function (p) {
+    var fig = document.createElement("figure");
+    fig.className = "card";
+    fig.dataset.cat = p.cat;
+    var quadro = document.createElement("div");
+    quadro.className = "quadro";
+    quadro.innerHTML = '<div class="ph"><svg class="star"><use href="#i-star"/></svg><b></b></div>';
+    quadro.querySelector("b").textContent = p.nome;
+    var img = new Image();
+    img.alt = p.nome + " feito pela Creative Studio";
+    img.loading = "lazy";
+    img.onload = function () { quadro.querySelector(".ph").remove(); };
+    img.onerror = function () { img.remove(); };
+    img.src = p.img;
+    quadro.appendChild(img);
+    var cap = document.createElement("figcaption");
+    cap.textContent = p.nome;
+    fig.appendChild(quadro);
+    fig.appendChild(cap);
+    galeria.appendChild(fig);
+  });
+
+  var chips = document.querySelectorAll(".chip");
+  chips.forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      var f = chip.dataset.f;
+      chips.forEach(function (c) { c.setAttribute("aria-pressed", c === chip ? "true" : "false"); });
+      galeria.querySelectorAll(".card").forEach(function (card) {
+        card.hidden = !(f === "todos" || card.dataset.cat === f);
+      });
+    });
+  });
+})();
+</script>
