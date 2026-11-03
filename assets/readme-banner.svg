@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" role="img" aria-labelledby="t d">
+  <title id="t">Landing Page Creative Studio</title>
+  <desc id="d">Banner indicando que este repositório é uma landing page, com uma janela de navegador desenhada ao lado do título.</desc>
+  <defs>
+    <radialGradient id="glow" cx="12%" cy="0%" r="70%">
+      <stop offset="0" stop-color="#A87585" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#A87585" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="win"><rect x="90" y="52" width="290" height="196" rx="16"/></clipPath>
+    <symbol id="star" viewBox="0 0 24 24"><path d="M12 0C12 7 17 12 24 12 17 12 12 17 12 24 12 17 7 12 0 12 7 12 12 7 12 0Z"/></symbol>
+  </defs>
+
+  <!-- fundo -->
+  <rect width="1200" height="300" rx="24" fill="#633F4B"/>
+  <rect width="1200" height="300" rx="24" fill="url(#glow)"/>
+
+  <!-- janela de navegador -->
+  <rect x="90" y="52" width="290" height="196" rx="16" fill="#FFF9F7"/>
+  <g clip-path="url(#win)">
+    <rect x="90" y="52" width="290" height="36" fill="#F1DDE0"/>
+    <!-- conteúdo do "site" -->
+    <path d="M286 226V150a38 38 0 0 1 76 0v76z" fill="#FCC3D1"/>
+    <rect x="112" y="116" width="118" height="14" rx="7" fill="#633F4B"/>
+    <rect x="112" y="140" width="92" height="14" rx="7" fill="#A87585"/>
+    <rect x="112" y="170" width="132" height="8" rx="4" fill="#D8AEB8"/>
+    <rect x="112" y="186" width="104" height="8" rx="4" fill="#D8AEB8"/>
+    <rect x="112" y="208" width="82" height="22" rx="11" fill="#633F4B"/>
+  </g>
+  <circle cx="110" cy="70" r="5" fill="#D8AEB8"/>
+  <circle cx="128" cy="70" r="5" fill="#D8AEB8"/>
+  <circle cx="146" cy="70" r="5" fill="#D8AEB8"/>
+  <rect x="172" y="62" width="180" height="16" rx="8" fill="#FFF9F7"/>
+  <use href="#star" x="340" y="106" width="22" height="22" fill="#A87585"/>
+
+  <!-- texto -->
+  <text x="450" y="124" font-family="'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="600" letter-spacing="7" fill="#D8AEB8">LANDING PAGE</text>
+  <text x="448" y="196" font-family="Georgia, 'Times New Roman', serif" font-size="74" fill="#FFF9F7">Creative Studio</text>
+  <text x="450" y="238" font-family="'Helvetica Neue', Arial, sans-serif" font-size="24" fill="#F1DDE0">Página de apresentação · HTML, CSS e JavaScript</text>
+
+  <!-- estrelas -->
+  <use href="#star" x="1000" y="96" width="46" height="46" fill="#D8AEB8"/>
+  <use href="#star" x="1056" y="150" width="22" height="22" fill="#A87585"/>
+</svg>
